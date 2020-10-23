@@ -23,5 +23,5 @@ Downloads football stats from footall-data.co.uk using curl and pipes it into a 
   - Find your `pg_hba` config file located at `/etc/postgresql/{your_postgresql_version}/main/pg_hba.conf`
   - Change from `local   all             postgres                                peer` to `local   all             postgres                                md5`
   - Add this line `local   sameuser        all                                     md5`
-6.  Now execute the `shell` script `./football-data.sh`
+6.  Now execute the `shell` script `./football-data.sh "password_for_football-stats_user"`
 7. Done! Now all the data has been stored in different tables.
