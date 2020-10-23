@@ -161,7 +161,7 @@ csv
     rows.push({ ...rowFormat, ...row });
   })
   .on('end', () => {
-    const ws = fs.createWriteStream(`./${season}.csv`, { flags: 'a' });
+    const ws = fs.createWriteStream(`./matches/${season}.csv`, { flags: 'a' });
     csv
       .writeToStream(ws, rows, { headers, writeHeaders: false })
       .on('error', (error) => {
