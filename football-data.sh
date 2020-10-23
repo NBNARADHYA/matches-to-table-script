@@ -6,5 +6,5 @@ for SEASON in "9394" "9495" "9596" "9697" "9798" "9899" "9900" "0001" "0102" "02
         echo "==============>" $COUNTRY "=============>"
         curl https://football-data.co.uk/mmz4281/${SEASON}/${COUNTRY}.csv | node ./index.js ${SEASON}
     done
-    PGPASSWORD=$1 psql -U footballstats -d footballstats -v season=$SEASON -f "./create_table.sql" -c "\copy public.season$SEASON (div, date, time, hometeam, awayteam, fthg, ftag, ftr, hthg, htag, htr, referee, hs, aws, hst, ast, hf, af, hc, ac, hy, ay, hr, ar) from './matches/$SEASON.csv' with (format csv, delimiter ',');"
+    PGPASSWORD=$1 psql -U footballstats -d footballstats -v season=$SEASON -f "./create_table.sql" -c "\copy public.season$SEASON (div, date, time, 'homeTeam', 'awayTeam', fthg, ftag, ftr, hthg, htag, htr, referee, hs, aws, hst, ast, hf, af, hc, ac, hy, ay, hr, ar) from './matches/$SEASON.csv' with (format csv, delimiter ',');"
 done
